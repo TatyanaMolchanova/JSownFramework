@@ -1,0 +1,23 @@
+Webpack ( imports/exports )
+    Babel
+    SCSS
+    Eslint
+    2 Modes
+        - Dev mode: dev-server, SourceMaps, Eslint, Not Minified Js and CSS
+        - Prod mode: Minified Code
+
+Git
+    Production
+        1.0.0
+        0 -----
+    Development
+        1.2.2
+        1 ------- + ---   PR+ pull request
+        2 ---------
+
+
+lesson17 прошла
+
+npm i -D cross-env - defines variable of current ENV
+npm i eslint eslint-loader babel-eslint -D
+

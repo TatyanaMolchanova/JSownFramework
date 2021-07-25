@@ -1,0 +1,51 @@
+{
+  "name": "ownframework",
+  "version": "1.0.0",
+  "description": "Pure JavaScript Excel Application",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=development webpack serve --open",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TatyanaMolchanova/my-own-framework.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "framework"
+  ],
+  "author": "Molchanova Tatyana <mtuspeh@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TatyanaMolchanova/my-own-framework/issues"
+  },
+  "homepage": "https://github.com/TatyanaMolchanova/my-own-framework#readme",
+  "browserslist": "> 0.25%, not dead",
+  "private": false,
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.31.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-loader": "^4.0.2",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "sass": "^1.36.0",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
+  }
+}
