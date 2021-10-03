@@ -24,14 +24,28 @@ export class DomListener {
                 throw new Error(`Method ${method} is not implemented in ${name} 
                 Component`)
             }
-            this.$root.on(listener, this[method].bind(this))
+            this[method] = this[method].bind(this)
+            this.$root.on(listener, this[method])
+            // this.$root.on(listener, this[method].bind(this)) // this error
+            // .bind() creates a new function but we deleted an old one
             // this.$root.on(listener, this['onInput'])
         })
     }
 
     removeDOMListeners() {
-        // TODO
+        console.log('removeDOMListeners')
+        this.listeners.forEach(listener => {
+            const method = getMethodName(listener)
+            this.$root.off(listener, this[method])
+        })
     }
+
+    // DOM solution
+    // removeDOMListeners() {
+    //     this.listeners.forEach(listener => {
+    //         this.$root.off(listener)
+    //     })
+    // }
 }
 
 function getMethodName(eventName) {

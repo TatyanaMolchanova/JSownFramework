@@ -1,6 +1,7 @@
 class Dom {
     constructor(selector) {
         // #app
+        // this.$$listeners = {}
         this.$el = typeof selector === 'string'
         ? document.querySelector(selector)
         : selector
@@ -22,6 +23,15 @@ class Dom {
     on(eventType, callback) {
         this.$el.addEventListener(eventType, callback)
     }
+
+    off(eventType, callback) {
+        this.$el.removeEventListener(eventType, callback)
+    }
+
+    // this DOM solution allows just 1 listener
+    // off(eventType) {
+    //     this.$el.removeEventListener(eventType, this.$$listeners[eventType])
+    // }
 
     // Element
     append(node) {
