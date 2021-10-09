@@ -20,7 +20,7 @@ export class Excel {
             // $el.classList.add(Component.className)
             const component = new Component($el)
             // debugger
-            // !!!DEBUG start
+            // !!!DEBUG1 start
             // if (component.name) {
             //     window['c' + component.name] = component
             // }

@@ -30,7 +30,7 @@ function toChar(_, index) {
 }
 
 export function createTable(rowsCount = 25) {
-    const colsCount = CODES.Z - CODES.A + 1
+    const colsCount = CODES.Z - CODES.A + 1 // Compute cols count
     const rows = []
 
     const cols = new Array(colsCount)
