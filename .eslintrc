@@ -11,6 +11,7 @@
     "arrow-parens": "off",
     "indent": "off",
     "comma-dangle": "off",
+    "operator-linebreak": "off",
     "require-jsdoc": "off"
   },
   "extends": ["google"]
