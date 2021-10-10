@@ -1,7 +1,7 @@
 import {$} from '../../core/dom';
 
 export function resizeHandler($root, event) {
-    console.log('start resizing ', event.target.dataset.resize)
+    // console.log('start resizing ', event.target.dataset.resize)
     const $resizer = $(event.target)
     // eslint-disable-next-line max-len
     // const $parent = $resize.$el.parentNode // bad practice - js is bind to view, to parent, to existing structure
@@ -12,7 +12,7 @@ export function resizeHandler($root, event) {
     // // debugger
     const coords = $parent.getCoords()
     const type = $resizer.data.resize
-    console.log(type)
+    // console.log(type)
     const sideProp = type === 'col' ? 'bottom' : 'right'
     let value
 
@@ -31,7 +31,7 @@ export function resizeHandler($root, event) {
 
     document.onmousemove = e => {
         if (type === 'col') {
-            console.log('onmousemove')
+            // console.log('onmousemove')
             const delta = e.pageX - coords.right
             // const delta = e.pageX - (coords.left + coords.right)
             // console.log(delta)

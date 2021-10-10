@@ -16,7 +16,7 @@ Git
         2 ---------
 
 
-lesson48 прошла
+lesson57 прошла
 
 npm i -D cross-env - defines variable of current ENV
 npm i eslint eslint-loader babel-eslint -D

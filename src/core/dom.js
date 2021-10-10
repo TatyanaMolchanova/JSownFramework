@@ -33,6 +33,10 @@ class Dom {
     //     this.$el.removeEventListener(eventType, this.$$listeners[eventType])
     // }
 
+    find(selector) {
+        return $(this.$el.querySelector(selector))
+    }
+
     // Element
     append(node) {
         if (node instanceof Dom) {
@@ -85,6 +89,30 @@ class Dom {
                 this.$el.style[key] = styles[key]
             })
        // this.$el.style.
+    }
+
+    id(parse) {
+        if (parse) {
+            const parsed = this.id().split(':')
+            return {
+                row: +parsed[0],
+                col: +parsed[1]
+            }
+        }
+        return this.data.id
+    }
+
+    focus() {
+        this.$el.focus()
+        return this
+    }
+
+    addClass(className) {
+        this.$el.classList.add(className)
+    }
+
+    removeClass(className) {
+        this.$el.classList.remove(className)
     }
 }
 
