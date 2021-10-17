@@ -8,11 +8,14 @@ import {TableSelection} from './TableSelection';
 export class Table extends ExcelComponent {
     static className = 'excel__table'
 
-    constructor($root) {
+    constructor($root, options) {
         super($root, {
+            name: 'Table',
             // listeners: ['click', 'mousedown', 'mousemove', 'mouseup']
-            listeners: ['mousedown', 'keydown']
+            listeners: ['mousedown', 'keydown', 'input'],
+            ...options
         });
+        // this.unsubs = []
     }
 
     toHTML() {
@@ -20,7 +23,7 @@ export class Table extends ExcelComponent {
     }
 
     prepare() {
-        console.log('prepare')
+        // console.log('prepare')
         this.selection = new TableSelection()
     }
 
@@ -28,9 +31,28 @@ export class Table extends ExcelComponent {
         super.init()
 
         // this.selection = new TableSelection()
-        const $cell = this.$root.find('[data-id="0:0"')
+        // const $cell = this.$root.find('[data-id="0:0"')
+        // this.selection.select($cell)
+        // this.$emit('table:select', $cell)
+        // this.selectCell($cell)
+        this.selectCell(this.$root.find('[data-id="0:0"'))
+        // console.log('init')
+        // const unsub = this.emitter.subscribe('it is working', text => {
+        // this.emitter.subscribe('it is working', text => {
+        // this.$on('it is working', text => {
+        this.$on('formula:input', text => {
+            this.selection.current.text(text)
+            console.log('Table from Formula', text)
+        })
+        // this.unsubs.push(unsub)
+        this.$on('formula:done', () => {
+            this.selection.current.focus()
+        })
+    }
+
+    selectCell($cell) {
         this.selection.select($cell)
-        console.log('init')
+        this.$emit('table:select', $cell)
     }
 
     // onClick() {
@@ -108,9 +130,20 @@ export class Table extends ExcelComponent {
             console.log(key)
             const id = this.selection.current.id(true)
             const $next = this.$root.find(nextSelector(key, id))
-            this.selection.select($next)
+            // this.selection.select($next)
+            // this.$emit('table:select', $next)
+            this.selectCell($next)
         }
         // console.log(event.key)
+    }
+    //
+    // destroy() {
+    //     super.destroy();
+    //     this.unsubs.forEach(unsub => unsub())
+    // }
+
+    onInput(event) {
+        this.$emit('table:input', $(event.target))
     }
 }
 
