@@ -1,14 +1,19 @@
 import {$} from '../../core/dom';
+import {Emitter} from '../../core/Emitter';
 
 export class Excel {
     constructor(selector, options) {
         this.$el = $(selector)
         // this.$el = document.querySelector(selector)
         this.components = options.components || []
+        this.emitter = new Emitter()
     }
 
     getRoot() {
         const $root = $.create('div', 'excel')
+        const componentOptions = {
+            emitter: this.emitter
+        }
         // const $root = document.createElement('div')
         // $root.classList.add('excel')
         // $root.textContent = 'test'
@@ -18,7 +23,7 @@ export class Excel {
             const $el = $.create('div', Component.className)
             // const $el = document.createElement('div')
             // $el.classList.add(Component.className)
-            const component = new Component($el)
+            const component = new Component($el, componentOptions)
             // debugger
             // !!!DEBUG1 start
             // if (component.name) {
@@ -57,5 +62,9 @@ export class Excel {
         // this.$el.append(this.getRoot().$el)
         // console.log(this.components)
         this.components.forEach(component => component.init())
+    }
+
+    destroy() {
+        this.components.forEach(component => component.destroy())
     }
 }

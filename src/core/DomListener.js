@@ -14,7 +14,7 @@ export class DomListener {
         this.listeners.forEach(listener => {
             const method = getMethodName(listener)
             // const method = capitalize(listener)
-            console.log(method)
+            // console.log(method)
             // console.log(this[]) - allow get instance of Formula class
             // console.log(listener, this.$root)
 
