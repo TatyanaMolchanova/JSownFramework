@@ -5,9 +5,12 @@ export class ExcelComponent extends DomListener {
         super($root, options.listeners)
         this.name = options.name || ''
         this.emitter = options.emitter
+        this.subscribe = options.subscribe || []
+        this.store = options.store
         this.unsubscribers = []
+        // this.storeSub = null
 
-        console.log('options', options)
+        // console.log('options', options)
 
         this.prepare()
     }
@@ -33,6 +36,24 @@ export class ExcelComponent extends DomListener {
         this.unsubscribers.push(unsub)
     }
 
+    $dispatch(action) {
+        this.store.dispatch(action)
+    }
+
+    // Сюда приходят изменения по тем полям, на которые мы подписались
+    storeChanged() {}
+
+    isWatching(key) {
+        return this.subscribe.includes(key)
+    }
+
+    // Подписку на стор мы сделаем на уровне приложения
+    // а не отдельных компонентов
+    // $subscribe(fn) {
+    //     this.storeSub = this.store.subscribe(fn)
+    //     // sub.unsubscribe()
+    // }
+
     // Инициализируем компонент, добавляем DOM слушателей
     init() {
         this.initDOMListeners()
@@ -42,5 +63,6 @@ export class ExcelComponent extends DomListener {
     destroy() {
         this.removeDOMListeners()
         this.unsubscribers.forEach(unsub => unsub())
+        // this.storeSub.unsubscribe()
     }
 }

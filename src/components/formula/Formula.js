@@ -11,6 +11,8 @@ export class Formula extends ExcelComponent {
             name: 'Formula',
             // listeners: ['input', 'click'],
             listeners: ['input', 'keydown'],
+            // subscribe: ['currentText', 'colState'],
+            subscribe: ['currentText'],
             ...options
         });
     }
@@ -31,12 +33,24 @@ export class Formula extends ExcelComponent {
 
         this.$on('table:select', $cell => {
             // this.$root.find('input')
-            this.$formula.text($cell.text())
+            this.$formula.text($cell.data.value)
+            // this.$formula.text($cell.text())
         })
 
-        this.$on('table:input', $cell => {
-            this.$formula.text($cell.text())
-        })
+        // this.$on('table:input', $cell => {
+        //     this.$formula.text($cell.text())
+        // })
+
+        // this.$subscribe(state => {
+        //     console.log('Formula update', state.currentText)
+        //     this.$formula.text(state.currentText)
+        //     // console.log('FormulaState', state)
+        // })
+    }
+
+    storeChanged({currentText}) {
+        this.$formula.text(currentText)
+        // console.log('changes', changes)
     }
 
     onInput(event) {
