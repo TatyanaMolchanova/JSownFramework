@@ -2,9 +2,8 @@ class Dom {
     constructor(selector) {
         // #app
         // this.$$listeners = {}
-        this.$el = typeof selector === 'string'
-        ? document.querySelector(selector)
-        : selector
+        // eslint-disable-next-line max-len
+        this.$el = typeof selector === 'string' ? document.querySelector(selector) : selector
     }
 
     html(html) {

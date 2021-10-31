@@ -1,7 +1,7 @@
 // import './module'
 // import {Excel} from './components/excel/Excel';
 import './scss/index.scss'
-import {Router} from './core/routes/router';
+import {Router} from './core/routes/Router';
 import {DashboardPage} from './pages/DashboardPage';
 import {ExcelPage} from './pages/ExcelPage';
 // import {Header} from './components/header/Header';
